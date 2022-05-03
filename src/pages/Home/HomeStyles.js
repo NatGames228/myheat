@@ -20,7 +20,8 @@ export const Box = styled.div`
   flex-direction: column;
   padding: ${px2vw(20)};
   margin: ${px2vw(20)};
-  background-color: ${props => props.bgColor};
+  // background-color: ${props => props.bgColor};
+  background-color: #9FEACD;
   height: 100%;
 
   @media (min-width: 768px) {
