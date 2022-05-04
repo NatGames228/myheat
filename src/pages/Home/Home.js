@@ -8,7 +8,6 @@ import { Container, Box, BoxTitle, BoxText } from "./HomeStyles";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.updateData();
   }
 
   state = {
@@ -17,6 +16,15 @@ class Home extends Component {
   }
 
   myHeatService = new MyHeatService();
+
+  componentDidMount() {
+    this.updateData();
+    this.timerId = setInterval(this.updateData, 15 * 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
   
   onDataLoaded = (data) => {
     this.setState({

@@ -18,7 +18,14 @@ class MyHeatService {
   
   updateData = async () => {
     const res = await this.getResource(`${this._apiBase}${this._apiKey}`);
-    this.data = res.data.map(this._transformData);
+    if (res.new) {
+      this.data = res.data.map(this._transformData);
+    } else {
+      this.data.forEach(item => {
+        let buf = res.data.find((el) => el.id === item.id);
+        item.temperature = this._transformData(buf).temperature;
+      })
+    }
     this.isNew = res.new;
   }
 
