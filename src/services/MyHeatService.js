@@ -23,7 +23,9 @@ class MyHeatService {
     } else {
       this.data.forEach(item => {
         let buf = res.data.find((el) => el.id === item.id);
-        item.temperature = this._transformData(buf).temperature;
+        if (buf) {
+          item.temperature = this._transformData(buf).temperature;
+        }
       })
     }
     this.isNew = res.new;
