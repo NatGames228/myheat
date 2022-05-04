@@ -53,7 +53,7 @@ class MyHeatService {
     return {
       id: result.id,
       name: result.name,
-      temperature: result.temperature,
+      temperature: result.temperature.toFixed(1),
     }
   }
 }
