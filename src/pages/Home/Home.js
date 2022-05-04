@@ -41,7 +41,6 @@ class Home extends Component {
 
   render() {
     const { data, isNew } = this.state;
-    console.log(data);
     return (
       <Container>
       {data.map(box => (

@@ -4,7 +4,7 @@ class MyHeatService {
   _apiKey = '';
 
   data = [];
-  isNew = false;
+  isNew = true;
   
   getResource = async (url) => {
     let res = await fetch(url);
@@ -18,7 +18,7 @@ class MyHeatService {
   
   updateData = async () => {
     const res = await this.getResource(`${this._apiBase}${this._apiKey}`);
-    if (res.new) {
+    if (res.new || !this.data.length) {
       this.data = res.data.map(this._transformData);
     } else {
       this.data.forEach(item => {
@@ -27,6 +27,13 @@ class MyHeatService {
       })
     }
     this.isNew = res.new;
+    console.log(new Date());
+    console.log(this.data, this.isNew);
+    console.log(res.data.sort((a, b) => {
+      if (a.id > b.id) return 1;
+      if (a.id === b.id) return 0;
+      if (a.id < b.id) return -1;
+    }), res.new);
   }
 
   getAllData = async () => {  
