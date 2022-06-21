@@ -7,10 +7,6 @@ export const Container = styled.div`
   justify-content: center;
   margin: ${px2vw(32)};
   max-width: 100%;
-
-  @media (min-width: 1024px) {
-    flex-wrap: nowrap;
-  }
 `;
 
 export const Box = styled.div`
